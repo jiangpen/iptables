@@ -33,16 +33,19 @@ As both PC and IoT device don't have public address, the first thing is to have 
 
 Steps:
 
-    Start an AWS EC2 instance(or any Linux server with public IP) , for example has public IP :200.200.200.200.
-    From IoT device, initial a SSH connection with revert option to this EC2 instance. If you use AWS IoT, it can be done by a IoT jobs.
+Start an AWS EC2 instance(or any Linux server with public IP) , for example has public IP :200.200.200.200.
+From IoT device, initial a SSH connection with revert option to this EC2 instance. If you use AWS IoT, it can be done by a IoT jobs.
 
+```
 ssh -R  200000:localhost:22 yourusername@200.200.200.200
+```
 
 Now a tunnel is established with port forwarding the 20000 to IoT device port 22 (SSH port). 3) From you PC, SSH to this AWS EC2 instance, generate key pairs, and Upload your SSH public key to the 'Security credentials' .
-
+```
 ssh yourusername@200.200.200.200
-
-    initial connection to IoT device. As tunnel has been built, you EC2 instance port 20000 will revert map to IoT device port 22.
-
+```
+initial connection to IoT device. As tunnel has been built, you EC2 instance port 20000 will revert map to IoT device port 22.
+```
 ssh root@localhost -p 20000
+```
 
